@@ -83,9 +83,6 @@ def start1():
     motor_direito.run_angle(500, 90, then=Stop.HOLD, wait=True)
     #drive_base.straight(200)
     
-    drive_base.settings(800,1000)
-    #drive_base.settings(velocidade = 0 a 977, aceleração = )
-    #giroPID(-90,2,0.0001,1)
     sm.next_state()
 
 def start2():
