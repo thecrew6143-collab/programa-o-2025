@@ -90,9 +90,15 @@ def start1():
     sm.next_state()
 
 def start2():
-    drive_base.straight(640)
+    drive_base.straight(670)
     giroPID(-44, 2, 0.0001, 1)
     drive_base.straight(150)
+    motor_direito.run_angle(-600,360, Stop.BRAKE, True)
+    drive_base.straight(-200)
+    giroPID(-46, 2, 0.0001, 1)
+    drive_base.straight(300)
+    motor_esquerdo.run_angle(-600,360, Stop.BRAKE, True)
+
 
 
 
