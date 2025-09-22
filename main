@@ -9,11 +9,11 @@ from pybricks.tools import wait
 hub = PrimeHub()
 hub.system.set_stop_button((Button.BLUETOOTH))
 
-left_motor = Motor(Port.F, Direction.COUNTERCLOCKWISE)
-right_motor = Motor(Port.B)
+left_motor = Motor(Port.B, Direction.COUNTERCLOCKWISE)
+right_motor = Motor(Port.F)
 
-motor_direito = Motor(Port.E, Direction.COUNTERCLOCKWISE)
-motor_esquerdo = Motor(Port.A)
+motor_direito = Motor(Port.A, Direction.COUNTERCLOCKWISE)
+motor_esquerdo = Motor(Port.E)
 
 # Initialize the drive base. In this example, the wheel diameter is 56mm.
 # The distance between the two wheel-ground contact points is 112mm.
@@ -79,16 +79,20 @@ class StateMachine:
 #=======================FUNÇÕES DE STARTS==========================#
 def start1():
     
-    drive_base.straight(200)
-    motor_direito.run_angle(500, 90, then=Stop.HOLD, wait=True)
-    #drive_base.straight(200)
-    
+    drive_base.straight(480)
+    giroPID(30, 2, 0.0001, 1)
+    drive_base.straight(160)
+    drive_base.straight(-20)
+    giroPID(60, 2, 0.0001, 1)
+    drive_base.straight(80)
+    motor_esquerdo.run_angle(200, 360, Stop.BRAKE, False)
+    motor_direito.run_angle(-200, 360, Stop.BRAKE, True)
     sm.next_state()
 
 def start2():
-    drive_base.straight(-200)
-    sm.next_state()
-
+    drive_base.straight(640)
+    giroPID(-44, 2, 0.0001, 1)
+    drive_base.straight(150)
 
 
 
