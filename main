@@ -7,6 +7,17 @@ from pybricks.tools import wait
 
 #=======================CONFIGURAÇÕES INICIAIS==========================#
 hub = PrimeHub()
+
+'''
+print (hub.system.info()["name"])
+# 🔎 Checagem de segurança: só roda se for o HUB certo
+if hub.system.info()["name"] != "V8 HUB":
+    print("Hub Errado")
+    while True:               # trava execução
+        raise SystemExit  # encerra o programa
+'''
+
+
 hub.system.set_stop_button((Button.BLUETOOTH))
 
 left_motor = Motor(Port.B, Direction.COUNTERCLOCKWISE)
@@ -46,6 +57,13 @@ def config(velocidade, aceleracao):
     drive_base.settings(velocidade, aceleracao)
 
 
+def resetar_guinada():
+    drive_base.use_gyro(False)
+    hub.imu.reset_heading(0)
+    drive_base.use_gyro(True)
+
+
+
 #=======================MÁQUINA DE ESTADO==========================#
 class StateMachine:
     def __init__(self, states):
@@ -77,7 +95,7 @@ class StateMachine:
 
 
 #=======================FUNÇÕES DE STARTS==========================#
-def start1():
+def start1():# start das pedras 
     drive_base.settings(800, 800)   
     drive_base.straight(550)
     giroPID(30, 2, 0.0001, 1)
@@ -96,15 +114,66 @@ def start1():
     giroPID(38, 2, 0.0001, 1)
     drive_base.settings(800, 800)
     drive_base.straight(600)
-def start2():
-    drive_base.settings(800, 800)   
-    drive_base.straight(670)
-    giroPID(-44, 2, 0.0001, 1)
+def start2():#sttrat do tridente 
+    drive_base.settings(600, 600)   
+    drive_base.straight(600)
+    drive_base.settings(800,800)
+    drive_base.straight(-150)
+    drive_base.settings(350,350)
+    drive_base.straight(200)
+    giroPID(-35, 2, 0.0001, 1)
     drive_base.settings(400, 400)   
-    drive_base.straight(130)
-    motor_direito.run_angle(600, -250, Stop.BRAKE, True)
+    drive_base.straight(200)
+    motor_direito.run_angle(400, -300, Stop.BRAKE, True)
+    drive_base.straight(-230)
+    resetar_guinada()
+    giroPID(-47, 2, 0.0001, 1)
+    drive_base.settings(300, 300)   
+    drive_base.straight(300)
+    motor_esquerdo.run_angle(300, -300, Stop.BRAKE, True)
+    drive_base.straight(-170)
+    resetar_guinada()
+    giroPID(-60, 2, 0.0001, 1)
+    drive_base.settings(800, 2000)
+    drive_base.straight(500)
+
+def start3():#start da areia 
+    drive_base.settings(500,300) #MUDAR VELOCIDADE
+    drive_base.straight(450) #ANDAR PRA FRENTE
+    drive_base.settings(400,350) #MUDAR VELOCIDADE
+
+    drive_base.straight(-150) #ANDAR PRA FRENTE
+    drive_base.settings(200,200) #MUDAR VELOCIDADE
+    drive_base.straight(200) #ANDAR PRA FRENTE
+    wait (1000)
+    drive_base.settings(900,700) #MUDAR VELOCIDADE
+
+    drive_base.straight(-500) #ANDAR PRA FRENTE
 
 
+
+    sm.next_state
+
+def start4():#
+     drive_base.straight(65)
+     resetar_guinada()
+     giroPID(-38, 2, 0.0001, 1)
+     drive_base.settings(700, 700)
+     drive_base.straight(400)
+     motor_direito.run_angle(400, -300, Stop.BRAKE, True) 
+     drive_base.straight(-150)
+     resetar_guinada()
+     giroPID(-50, 2, 0.0001, 1)
+     drive_base.straight(300)
+     motor_esquerdo.run_angle(400, -300, Stop.BRAKE, True)
+     drive_base.straight(-150)
+     resetar_guinada()   
+     giroPID(-60, 2, 0.0001, 1)
+     drive_base.settings(800, 2000)  
+     drive_base.straight(-500)
+        
+def start5():
+    motor_esquerdo.run_angle(400, -340, Stop.BRAKE, True)    
 
 
 
@@ -114,8 +183,8 @@ if __name__ == "__main__":
     states = [
         {"name": "Start 1", "action": lambda: start1()},
         {"name": "Start 2", "action": lambda: start2()},
-        {"name": "Start 3", "action": lambda: print("Robô virando à direita")},
-        {"name": "Start 4", "action": lambda: print("Encerrando programa")},
+        {"name": "Start 3", "action": lambda: start3()},
+        {"name": "Start 4", "action": lambda: start4()},
     ]
 
     sm = StateMachine(states)
