@@ -96,22 +96,24 @@ class StateMachine:
 
 #=======================FUNÇÕES DE STARTS==========================#
 def start1():# start das pedras 
-    drive_base.settings(800, 800)   
+    drive_base.settings(500, 300)   
     drive_base.straight(550)
-    giroPID(30, 2, 0.0001, 1)
+    giroPID(32, 2, 0.0005, 5)
+    wait (500)
+    drive_base.settings(300, 300)   
     drive_base.straight(100)
     drive_base.straight(-15)
-    giroPID(57, 2, 0.0001, 1)
-    drive_base.straight(120)
+    giroPID(57, 2, 0.0005, 1)
+    drive_base.straight(110)
     motor_esquerdo.run_angle(600,-220, Stop.BRAKE, True)
     drive_base.straight(125)
     motor_esquerdo.run_angle(600,270, Stop.BRAKE, True)
-    drive_base.straight(-220)
-    giroPID(50, 2, 0.0001, 1)
-    drive_base.settings(300, 300)
-    drive_base.straight(-100)
+    drive_base.straight(-210)
+    giroPID(40, 2, 0.0005, 1)
+    drive_base.settings(200, 200)
+    drive_base.straight(-130)
     drive_base.straight(30)
-    giroPID(38, 2, 0.0001, 1)
+    giroPID(38, 2, 0.0005, 1)
     drive_base.settings(800, 800)
     drive_base.straight(600)
 def start2():#sttrat do tridente 
@@ -138,13 +140,13 @@ def start2():#sttrat do tridente
     drive_base.straight(500)
 
 def start3():#start da areia 
-    drive_base.settings(500,300) #MUDAR VELOCIDADE
-    drive_base.straight(450) #ANDAR PRA FRENTE
-    drive_base.settings(400,350) #MUDAR VELOCIDADE
+    drive_base.settings(300,300) #MUDAR VELOCIDADE
+    drive_base.straight(440) #ANDAR PRA FRENTE
+    drive_base.settings(600,350) #MUDAR VELOCIDADE
 
-    drive_base.straight(-150) #ANDAR PRA FRENTE
+    drive_base.straight(-180) #ANDAR PRA FRENTE
     drive_base.settings(200,200) #MUDAR VELOCIDADE
-    drive_base.straight(200) #ANDAR PRA FRENTE
+    drive_base.straight(260) #ANDAR PRA FRENTE
     wait (1000)
     drive_base.settings(900,700) #MUDAR VELOCIDADE
 
@@ -155,25 +157,22 @@ def start3():#start da areia
     sm.next_state
 
 def start4():#
-     drive_base.straight(65)
-     resetar_guinada()
-     giroPID(-38, 2, 0.0001, 1)
-     drive_base.settings(700, 700)
-     drive_base.straight(400)
-     motor_direito.run_angle(400, -300, Stop.BRAKE, True) 
-     drive_base.straight(-150)
-     resetar_guinada()
-     giroPID(-50, 2, 0.0001, 1)
-     drive_base.straight(300)
-     motor_esquerdo.run_angle(400, -300, Stop.BRAKE, True)
-     drive_base.straight(-150)
-     resetar_guinada()   
-     giroPID(-60, 2, 0.0001, 1)
-     drive_base.settings(800, 2000)  
-     drive_base.straight(-500)
+    drive_base.settings(150, 150)   
+    drive_base.straight(75)
+    wait(500)
+    resetar_guinada()
+    giroPID(-44, 2, 0.0001, 1)
+    drive_base.settings(900,900)
+    drive_base.straight(370)
+    motor_direito.run_angle(400, -300, Stop.BRAKE, True) 
+    motor_esquerdo.run_angle(400, -600, Stop.BRAKE, True)
+    drive_base.settings(300,300)
+    drive_base.straight(-700)
+
         
 def start5():
-    motor_esquerdo.run_angle(400, -340, Stop.BRAKE, True)    
+    drive_base.settings(900, 900)   
+    drive_base.straight(1700) 
 
 
 
@@ -181,10 +180,10 @@ def start5():
 if __name__ == "__main__":
     # Definindo os estados
     states = [
-        {"name": "Start 1", "action": lambda: start1()},
-        {"name": "Start 2", "action": lambda: start2()},
-        {"name": "Start 3", "action": lambda: start3()},
-        {"name": "Start 4", "action": lambda: start4()},
+        {"name": "Start 1", "action": lambda: start2()},
+        {"name": "Start 2", "action": lambda: start3()},
+        {"name": "Start 3", "action": lambda: start5()},
+        {"name": "Start 4", "action": lambda: start1()},
     ]
 
     sm = StateMachine(states)
