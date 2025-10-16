@@ -159,13 +159,14 @@ def start3():#start da areia
 
 def start4():#start do telhado
     drive_base.settings(150, 150)   
-    drive_base.straight(55)
+    drive_base.straight(70)
     wait(500)
     resetar_guinada()
     giroPID(-44, 2, 0.0001, 1)
     drive_base.settings(800, 800)   
-    drive_base.straight(410)
-    motor_direito.run_angle(400, -300, Stop.BRAKE, True) 
+    drive_base.straight(200)
+    motor_direito.run_angle(600, 700, Stop.BRAKE, True) 
+    wait(8800)
     motor_esquerdo.run_angle(400, -600, Stop.BRAKE, True)
     drive_base.settings(300,300)
     drive_base.straight(-700)
@@ -174,25 +175,57 @@ def start4():#start do telhado
 def start5():
     drive_base.settings(900, 900)   
     drive_base.straight(1700) 
+    
+def start6():
+    drive_base.settings(400, 400)
+    drive_base.straight(620)   
+    resetar_guinada()
+    giroPID(-85, 2, 0.0005, 1)
+    drive_base.straight(-335)
+    resetar_guinada()
+    giroPID(84, 2, 0.0005, 1)
+    drive_base.settings(300, 200)
+    drive_base.straight(17)
+    motor_direito.run_angle(400, -300, Stop.BRAKE, True)
+    motor_esquerdo.run_angle(400, 600, Stop.BRAKE, True)
+    drive_base.straight(115)
+    motor_esquerdo.run_angle(400, -600, Stop.BRAKE, True)
+    motor_esquerdo.run_angle(400, 600, Stop.BRAKE, True)
+    resetar_guinada()
+    giroPID(5, 2, 0.0005, 1)
+    drive_base.straight(-150)
+    resetar_guinada()
+    giroPID(85, 2, 0.0005, 1)
+    drive_base.straight(-400)
+    resetar_guinada()
+    giroPID(90, 2, 0.0005, 1)
+     
+def start7():
+    drive_base.straight(500)
+    resetar_guinada()
+    giroPID(-45, 2, 0.0005, 1)
+    drive_base.straight(300)
 
 
 
 #=======================EXECUÇÃO PRINCIPAL==========================#
 if __name__ == "__main__":
     # Definindo os estados
-    states = [
+     states = [
         {"name": "Start 1", "action": lambda: start2()},
         {"name": "Start 2", "action": lambda: start3()},
         {"name": "Start 3", "action": lambda: start5()},
         {"name": "Start 4", "action": lambda: start1()},
         {"name": "Start 5", "action": lambda: start4()},
+        {"name": "Start 6", "action": lambda: start6()},
+        {"name": "Start 7", "action": lambda: start7()}
     ]
 
-    sm = StateMachine(states)
-    sm.show_state()
+     sm = StateMachine(states)
+     sm.show_state()
 
     # Loop infinito de estados.
-    while True:
+     while True:
         if Button.RIGHT in hub.buttons.pressed():   # botão direito
             sm.next_state()
             wait (200)
