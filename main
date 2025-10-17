@@ -181,30 +181,90 @@ def start6():
     drive_base.straight(620)   
     resetar_guinada()
     giroPID(-85, 2, 0.0005, 1)
-    drive_base.straight(-335)
+    drive_base.straight(-320)
     resetar_guinada()
     giroPID(84, 2, 0.0005, 1)
-    drive_base.settings(300, 200)
-    drive_base.straight(17)
-    motor_direito.run_angle(400, -300, Stop.BRAKE, True)
-    motor_esquerdo.run_angle(400, 600, Stop.BRAKE, True)
-    drive_base.straight(115)
-    motor_esquerdo.run_angle(400, -600, Stop.BRAKE, True)
-    motor_esquerdo.run_angle(400, 600, Stop.BRAKE, True)
+
+    wait (200)
+    drive_base.settings(300, 300)
+    drive_base.straight(15)
+
+    motor_direito.run_angle(300, -300, Stop.BRAKE, True)
+    motor_esquerdo.run_angle(300, 190, Stop.BRAKE, True)
+    drive_base.straight(120)
+    motor_esquerdo.run_angle(500, -300, Stop.BRAKE, True)
+    motor_esquerdo.run_angle(500, 300, Stop.BRAKE, True)
     resetar_guinada()
     giroPID(5, 2, 0.0005, 1)
-    drive_base.straight(-150)
+    drive_base.straight(-90)
     resetar_guinada()
     giroPID(85, 2, 0.0005, 1)
-    drive_base.straight(-400)
+    drive_base.straight(-250)
     resetar_guinada()
     giroPID(90, 2, 0.0005, 1)
-     
+    drive_base.straight(700)
 def start7():
     drive_base.straight(500)
     resetar_guinada()
+    giroPID(-50, 2, 0.0005, 1)
+    drive_base.straight(320)
+    resetar_guinada()
     giroPID(-45, 2, 0.0005, 1)
-    drive_base.straight(300)
+    drive_base.straight(580)
+    resetar_guinada()
+    giroPID(-40, 2, 0.0005, 1)
+    drive_base.straight(100)
+    resetar_guinada()
+    giroPID(-23, 2, 0.0005, 1)
+    drive_base.straight(85)
+    drive_base.straight(-60)
+    resetar_guinada()
+    giroPID(-20, 2, 0.0005, 1)
+
+
+def start8():
+    hub.imu.reset_heading(0)
+    drive_base.settings(400,500)
+    drive_base.straight(900)
+    giroPID(90,1.5,0.0005,1)
+    drive_base.settings(200,100)
+    drive_base.straight(120)
+    drive_base.straight(-15)
+    giroPID(-5,2,0.0005,1)
+    wait (500)
+    motor_direito.run_angle(300,1000)
+    giroPID(2,2,0.0005,1)
+    #girar motor
+    drive_base.settings(400,500)
+    drive_base.straight(-230)
+    #girar motor
+    #motor_esquerdo.run_angle(300,200)
+    #wait(200)
+    motor_esquerdo.run_angle(-900,400)
+    wait(300)
+    motor_esquerdo.run_angle(600,250)
+
+    drive_base.settings(800,4000)
+
+    drive_base.straight(100)
+    giroPID(-55,2, 0.0005,1)
+    drive_base.settings(800,8000)
+    drive_base.straight(600)
+
+
+def start9():
+    '''hub.imu.reset_heading(0)
+    drive_base.settings(400,500)
+    drive_base.straight(400)'''
+    for i in range (3):
+        motor_direito.run_time(900,500)
+        wait (500)
+        motor_direito.run_time(-800,1000)
+        wait(200)
+
+    drive_base.settings(800,5000)
+    drive_base.straight(-400)
+
 
 
 
@@ -218,7 +278,9 @@ if __name__ == "__main__":
         {"name": "Start 4", "action": lambda: start1()},
         {"name": "Start 5", "action": lambda: start4()},
         {"name": "Start 6", "action": lambda: start6()},
-        {"name": "Start 7", "action": lambda: start7()}
+        {"name": "Start 7", "action": lambda: start7()},
+        {"name": "Start 8", "action": lambda: start8()},
+        {"name": "Start 9", "action": lambda: start9()}
     ]
 
      sm = StateMachine(states)
