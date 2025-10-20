@@ -1,4 +1,3 @@
-
 from pybricks.pupdevices import Motor
 from pybricks.parameters import Port, Direction, Button, Stop
 from pybricks.robotics import DriveBase
@@ -165,9 +164,29 @@ def start4():#start do telhado com bandeira
 
         
 def start5():#start do silo 
-    drive_base.settings(900, 900)   
-    drive_base.straight(1700) 
-    
+    drive_base.settings(600,2000)
+    drive_base.straight(350)
+    motor_direito.run_time(800, 1000, Stop.BRAKE, True)
+    motor_direito.run_time(-500, 1000, Stop.BRAKE, True)
+    motor_direito.run_time(800, 1000, Stop.BRAKE, True)
+    motor_direito.run_time(-500, 1000, Stop.BRAKE, True)
+    motor_direito.run_time(800, 1000, Stop.BRAKE, True)
+    motor_direito.run_time(-500, 1000, Stop.BRAKE, True)
+    motor_direito.run_time(800, 1000, Stop.BRAKE, True)
+    motor_direito.run_time(-500, 1000, Stop.BRAKE, True)
+    drive_base.straight(-100)
+    resetar_guinada()
+    giroPID(-50, 2, 0.0001, 1)
+    drive_base.straight(255)
+    motor_esquerdo.run_angle(300, 700, Stop.BRAKE, True)
+    drive_base.settings(600,2000)
+    drive_base.straight(-400)
+'''motor_direito.run_time(300, 500, Stop.BRAKE, True)
+ motor_direito.run_time(300, -500, Stop.BRAKE, True)
+ motor_direito.run_time(300, 500, Stop.BRAKE, True)
+ motor_direito.run_time(300, -500, Stop.BRAKE, True)
+ motor_direito.run_time(300, 500, Stop.BRAKE, True)'''
+ 
 def start6():#start da compartilhada
     drive_base.settings(400, 400)
     drive_base.straight(620)   
@@ -198,7 +217,7 @@ def start6():#start da compartilhada
     resetar_guinada()
     giroPID(95, 5, 0.0005, 1)
     drive_base.straight(650)
-def start7():#start do indiana joana 
+def start7():#start do indiana jones 
     drive_base.settings(500,400)
     drive_base.straight(460)
     resetar_guinada()
@@ -206,16 +225,19 @@ def start7():#start do indiana joana
     motor_direito.run_angle(200, -500, Stop.BRAKE, True)
     drive_base.straight(270)
     resetar_guinada ()
-    giroPID(-19, 1.5, 0.0002, 1)
+    giroPID(-17, 1.5, 0.0002, 1)
     drive_base.straight(200)
     resetar_guinada()
     giroPID(-28, 1.5, 0.0002, 1)
-    drive_base.straight(650)
+    drive_base.straight(620)
     resetar_guinada()
     giroPID(-105, 1.5, 0.0002, 1)
     motor_esquerdo.run_angle(200,600,Stop.BRAKE, True)
     drive_base.straight(160)
     motor_esquerdo.run_angle(200,-600,Stop.BRAKE, True)
+    motor_direito.run_angle(200,600,Stop.BRAKE, True)
+    drive_base.straight(-50)
+
 
 def start8():#start do guindaste 
     hub.imu.reset_heading(0)
