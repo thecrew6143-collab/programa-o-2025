@@ -115,17 +115,18 @@ def start5():# start das pedras
     motor_esquerdo.run_angle(600,270, Stop.BRAKE, True)
     drive_base.straight(-210)
     resetar_guinada()
-    giroPID(46, 1.5, 0.0003, 1)
+    giroPID(45, 1.5, 0.0003, 1)
     drive_base.settings(200, 200)
     drive_base.straight(-130)
     resetar_guinada()
-    giroPID(-2, 3, 0.001, 1)
+    drive_base.settings(800, 8000)
+
+    giroPID(-4, 3, 0.001, 1)
     drive_base.straight(30)
     resetar_guinada()
-    giroPID(41, 2, 0.001, 1)
-    drive_base.settings(800, 8000)
+    giroPID(42, 2, 0.001, 1)
     drive_base.straight(600)
-    wait(50)
+
     sm.next_state()
     drive_base.use_gyro(False)
 
@@ -152,13 +153,12 @@ def start2():#sttrat do tridente
     drive_base.straight(210)
     motor_esquerdo.run_angle(800, -300, Stop.BRAKE, True)
 
-    drive_base.settings(800, 5000)
+    drive_base.settings(900, 8000)
     drive_base.straight(-170)
     resetar_guinada()
     giroPID(-60, 3, 0.001, 1)
     drive_base.straight(500)
 
-    wait(50)
     sm.next_state()
     drive_base.use_gyro(False)
 
@@ -172,14 +172,11 @@ def start3():#start da areia
     drive_base.straight(-180) #ANDAR PRA FRENTE
     drive_base.settings(200,200) #MUDAR VELOCIDADE
     drive_base.straight(260) #ANDAR PRA FRENTE
-    wait (1000)
-    drive_base.settings(900,700) #MUDAR VELOCIDADE
+    wait (100)
+    drive_base.settings(900,8000) #MUDAR VELOCIDADE
 
     drive_base.straight(-500) #ANDAR PRA FRENTE
 
-
-
-    wait(50)
     sm.next_state()
     drive_base.use_gyro(False)
 
@@ -190,20 +187,19 @@ def start6():#start do silo
     drive_base.settings(600,1000)
     drive_base.straight(350)
     motor_direito.run_time(800, 1000, Stop.BRAKE, True)
-    motor_direito.run_time(-500, 1000, Stop.BRAKE, True)
+    motor_direito.run_time(-800, 1000, Stop.BRAKE, True)
     motor_direito.run_time(800, 1000, Stop.BRAKE, True)
-    motor_direito.run_time(-500, 1000, Stop.BRAKE, True)
-    motor_direito.run_time(800, 1000, Stop.BRAKE, True)
-    motor_direito.run_time(-500, 1000, Stop.BRAKE, True)
-    ''' motor_direito.run_time(800, 1000, Stop.BRAKE, True)
-    motor_direito.run_time(-500, 1000, Stop.BRAKE, True)'''
+    motor_direito.run_time(-800, 1000, Stop.BRAKE, True)
+    '''motor_direito.run_time(800, 1000, Stop.BRAKE, True)
+    motor_direito.run_time(-800, 1000, Stop.BRAKE, True)'''
+
     drive_base.settings(400,400)   
-    drive_base.straight(-110)
+    drive_base.straight(-113)
     resetar_guinada()
     giroPID(-50, 2, 0.0001, 1)
     drive_base.settings(300,300)   
     drive_base.straight(285)
-    drive_base.straight(-18)
+    drive_base.straight(-28)
     motor_esquerdo.run_angle(100, 210, Stop.BRAKE, True)
     wait(1000)
     drive_base.settings(200,1000)   
@@ -216,49 +212,44 @@ def start6():#start do silo
     giroPID(80, 10, 0.001, 1)
 
 
-    wait(50)
     sm.next_state()
     drive_base.use_gyro(False)
-"""    drive_base.straight(-50)
-    resetar_guinada()
-    giroPID(45, 2, 0.0001, 1)
-    drive_base.straight(-600)"""
+
 
  
 def start1():#start da compartilhada   #start1
     drive_base.use_gyro(True)
 
-    drive_base.settings(400, 400)
-    drive_base.straight(620)   
+    drive_base.settings(500, 800)
+    drive_base.straight(600)   
     resetar_guinada()
     giroPID(-86, 2, 0.0005, 1)
-    drive_base.straight(-325)
+    drive_base.straight(-320)
     resetar_guinada()
-    giroPID(85, 2, 0.0005, 1)
+    giroPID(86, 2, 0.0005, 1)
 
     wait (200)
     drive_base.settings(300, 300)
-    drive_base.straight(12)
+    drive_base.straight(10)
     drive_base.straight(5)
     motor_direito.run_angle(300, -300, Stop.BRAKE, True)
     motor_esquerdo.run_angle(300, 190, Stop.BRAKE, True)
     drive_base.settings(200,1000)
     drive_base.straight(120)
-    motor_esquerdo.run_time(-700, 2000, Stop.BRAKE, True)
+    motor_esquerdo.run_time(-700, 1500, Stop.BRAKE, True)
     motor_esquerdo.run_time(400, 1500, Stop.BRAKE, True)
     resetar_guinada()
     #giroPID(5, 2, 0.001, 1)
-    drive_base.settings(500,500)
+    drive_base.settings(900,8000)
     drive_base.straight(-90)
     resetar_guinada()
-    giroPID(85, 2, 0.0005, 1)
+    giroPID(85, 2, 0.005, 1)
     drive_base.settings(900,8000)
     drive_base.straight(-250)
     resetar_guinada()
     giroPID(95, 5, 0.0005, 1)
     drive_base.straight(650)
 
-    wait(50)
     sm.next_state()
     drive_base.use_gyro(False)
 
@@ -271,34 +262,16 @@ def start7():#start do indiana jones
     drive_base.settings(500,300)
     drive_base.straight(400)
     motor_direito.run_angle(800, -300, Stop.BRAKE, True)
+    drive_base.settings(800,8000)
     drive_base.straight(-480)
     resetar_guinada()
     giroPID(45, 1.5, 0.001, 1)
-    drive_base.settings(500,300)
     drive_base.straight(-400)
 
     wait(50)
     sm.next_state()
     drive_base.use_gyro(False)
 
-
-
-
-    '''resetar_guinada ()
-    giroPID(-17, 1.5, 0.0002, 1)
-    drive_base.straight(200)
-    resetar_guinada()
-    giroPID(-28, 1.5, 0.0002, 1)
-    drive_base.straight(620)
-    resetar_guinada()
-    giroPID(-105, 1.5, 0.0002, 1)
-    motor_esquerdo.run_angle(200,600,Stop.BRAKE, True)
-    drive_base.straight(160)
-    motor_esquerdo.run_angle(200,-600,Stop.BRAKE, True)
-    motor_direito.run_angle(200,600,Stop.BRAKE, True)
-    drive_base.straight(-50)'''
-    
-    wait(50)
     sm.next_state()
     drive_base.use_gyro(False)
 
@@ -310,13 +283,12 @@ def start4():#start do guindaste  #start4
     drive_base.settings(400,500)
     drive_base.straight(900)
     giroPID(90,1.5,0.0005,1)
-    drive_base.settings(200,100)
-    drive_base.straight(120)
+    drive_base.settings(200,300)
+    drive_base.straight(140)
     drive_base.straight(-15)
-    giroPID(-5,2,0.0005,1)
-    wait (500)
-    motor_direito.run_angle(300,1000)
-    giroPID(3,5,0.001,1)
+    giroPID(-7,2,0.001,1)
+    motor_direito.run_angle(300,800)
+    giroPID(2,5,0.001,1)
     #girar motor
     drive_base.settings(400,500)
     drive_base.straight(-230)
@@ -327,14 +299,13 @@ def start4():#start do guindaste  #start4
     wait(300)
     motor_esquerdo.run_angle(600,250)
 
-    drive_base.settings(800,4000)
+    drive_base.settings(900,8000)
 
     drive_base.straight(100)
     giroPID(-60,2, 0.0005,1)
     drive_base.settings(900,8000)
     drive_base.straight(650)
 
-    wait(50)
     sm.next_state()
     drive_base.use_gyro(False)
 
@@ -354,7 +325,7 @@ def start8():
     drive_base.straight(40)
     drive_base.straight(-80)
 
-def start9():
+def start9():#start 
     drive_base.use_gyro(True)
     hub.imu.reset_heading(0)
     drive_base.settings(400,300)
@@ -368,11 +339,36 @@ def start9():
     motor_esquerdo.run_angle(-200,300)
     drive_base.straight(40)
     drive_base.straight(-80)
+    
+    sm.next_state()
+    drive_base.use_gyro(False)
 
-def start10():
+def start10():# start dos 3 artefatos 
     drive_base.settings(800,1200)
     drive_base.straight(350)
     drive_base.straight(-350)
+    
+    sm.next_state()
+    drive_base.use_gyro(False)
+
+def start11(): #start do dinossauro 
+    drive_base.settings(500,1000)
+
+    drive_base.straight(675)
+    resetar_guinada ()
+    giroPID(36, 1.5, 0.002, 1)
+    wait (200)
+    motor_direito.run_time(-400,200,Stop.BRAKE, True)
+    drive_base.settings(500,400)
+    drive_base.straight(270)
+    resetar_guinada ()
+    giroPID(2,2,0.002,1)
+    motor_direito.run_time(800,1000,Stop.BRAKE, True)
+    motor_esquerdo.run_angle(300,600,Stop.BRAKE, True)
+    drive_base.straight(100)
+
+    drive_base.straight(-300)
+
 
 #=======================EXECUÇÃO PRINCIPAL==========================#
 if __name__ == "__main__":
@@ -384,10 +380,10 @@ if __name__ == "__main__":
         {"name": "Start 4", "action": lambda: start10()},
         {"name": "Start 5", "action": lambda: start4()},
         {"name": "Start 6", "action": lambda: start5()},
-        {"name": "Start 7", "action": lambda: start6()},
-        {"name": "Start 8", "action": lambda: start7()},
-        {"name": "Start 9", "action": lambda: start8()},
-        {"name": "Start 10", "action": lambda: start9()},
+        {"name": "Start 7", "action": lambda: start7()},
+        {"name": "Start 8", "action": lambda: start6()},
+        {"name": "Start 9", "action": lambda: start6()},
+        {"name": "Start 10", "action": lambda: start11()},
         
     ]
 
