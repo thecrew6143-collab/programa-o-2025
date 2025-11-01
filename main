@@ -287,21 +287,22 @@ def start4():#start do guindaste  #start4
     drive_base.straight(140)
     drive_base.straight(-15)
     giroPID(-7,2,0.001,1)
-    motor_direito.run_angle(300,800)
+    motor_direito.run_angle(600,800)
     giroPID(2,5,0.001,1)
     #girar motor
     drive_base.settings(400,500)
-    drive_base.straight(-230)
+    drive_base.straight(-360)
     #girar motor
     #motor_esquerdo.run_angle(300,200)
     #wait(200)
+    drive_base.straight(135)
     motor_esquerdo.run_angle(-900,400)
     wait(300)
-    motor_esquerdo.run_angle(600,250)
+    
 
     drive_base.settings(900,8000)
 
-    drive_base.straight(100)
+    drive_base.straight(180)
     giroPID(-60,2, 0.0005,1)
     drive_base.settings(900,8000)
     drive_base.straight(650)
