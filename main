@@ -190,16 +190,18 @@ def start6():#start do silo
     motor_direito.run_time(-800, 1000, Stop.BRAKE, True)
     motor_direito.run_time(800, 1000, Stop.BRAKE, True)
     motor_direito.run_time(-800, 1000, Stop.BRAKE, True)
+    motor_direito.run_time(800, 1000, Stop.BRAKE, True)
+    motor_direito.run_time(-800, 1000, Stop.BRAKE, True)
     '''motor_direito.run_time(800, 1000, Stop.BRAKE, True)
     motor_direito.run_time(-800, 1000, Stop.BRAKE, True)'''
 
     drive_base.settings(400,400)   
-    drive_base.straight(-113)
+    drive_base.straight(-116)
     resetar_guinada()
     giroPID(-50, 2, 0.0001, 1)
     drive_base.settings(300,300)   
     drive_base.straight(285)
-    drive_base.straight(-28)
+    drive_base.straight(-29)
     motor_esquerdo.run_angle(100, 210, Stop.BRAKE, True)
     wait(1000)
     drive_base.settings(200,1000)   
@@ -224,18 +226,21 @@ def start1():#start da compartilhada   #start1
     drive_base.straight(600)   
     resetar_guinada()
     giroPID(-86, 2, 0.0005, 1)
-    drive_base.straight(-320)
+    drive_base.straight(-335)
     resetar_guinada()
-    giroPID(86, 2, 0.0005, 1)
+    giroPID(87, 2, 0.0005, 1)
 
     wait (200)
     drive_base.settings(300, 300)
     drive_base.straight(10)
     drive_base.straight(5)
+
     motor_direito.run_angle(300, -300, Stop.BRAKE, True)
     motor_esquerdo.run_angle(300, 190, Stop.BRAKE, True)
     drive_base.settings(200,1000)
     drive_base.straight(120)
+    resetar_guinada()
+    
     motor_esquerdo.run_time(-700, 1500, Stop.BRAKE, True)
     motor_esquerdo.run_time(400, 1500, Stop.BRAKE, True)
     resetar_guinada()
@@ -263,10 +268,8 @@ def start7():#start do indiana jones
     drive_base.straight(400)
     motor_direito.run_angle(800, -300, Stop.BRAKE, True)
     drive_base.settings(800,8000)
-    drive_base.straight(-480)
-    resetar_guinada()
-    giroPID(45, 1.5, 0.001, 1)
-    drive_base.straight(-400)
+    drive_base.straight(-880)
+    
 
     wait(50)
     sm.next_state()
@@ -286,9 +289,9 @@ def start4():#start do guindaste  #start4
     drive_base.settings(200,300)
     drive_base.straight(140)
     drive_base.straight(-15)
-    giroPID(-7,2,0.001,1)
+    giroPID(-9,2,0.001,1)
     motor_direito.run_angle(600,800)
-    giroPID(2,5,0.001,1)
+    giroPID(3,5,0.001,1)
     #girar motor
     drive_base.settings(400,500)
     drive_base.straight(-360)
@@ -302,7 +305,7 @@ def start4():#start do guindaste  #start4
 
     drive_base.settings(900,8000)
 
-    drive_base.straight(180)
+    drive_base.straight(140)
     giroPID(-60,2, 0.0005,1)
     drive_base.settings(900,8000)
     drive_base.straight(650)
