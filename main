@@ -65,7 +65,6 @@ class StateMachine:
     def next_state(self):
         self.index = (self.index + 1) % len(self.states)
         self.show_state()
-
     def prev_state(self):
         self.index = (self.index - 1) % len(self.states)
         self.show_state()
@@ -84,7 +83,7 @@ class StateMachine:
 def start1():  #START DO BARCO 
     drive_base.use_gyro(True)
     drive_base.settings(800,800)
-    drive_base.straight(560)
+    drive_base.straight(640)
     motor_direito.run_time(1000,1400)
     drive_base.settings(800,800)
     drive_base.straight(-40)
@@ -112,12 +111,14 @@ def start2():  # START DA COMPARTRILHADA
     giroPID(x*-1, 2, 0.0005, 1)
     drive_base.settings(300, 300)
     drive_base.straight(20)
+    drive_base.straight(-10)
     motor_direito.run_angle(300, -290, Stop.BRAKE, True)
     motor_esquerdo.run_angle(-1000, 90, Stop.BRAKE, True)
 
     drive_base.settings(200, 200)
-    drive_base.straight(160)
+    drive_base.straight(180)
     motor_esquerdo.run_time(-1000, 1500, Stop.BRAKE, True)
+    motor_esquerdo.run_time(-1000, 1000, Stop.BRAKE, True)
     '''drive_base.straight(40)
     motor_esquerdo.run_time(-1000, 700, Stop.BRAKE, True)'''
     drive_base.straight(-20)
@@ -244,7 +245,7 @@ def start6():  # START DAS PEDRAS
     motor_direito.run_time(-800, 1000, Stop.BRAKE, True)
     drive_base.settings(600, 1000)
     drive_base.straight(110)
-    motor_direito.run_time(400, 3100, Stop.BRAKE, True)
+    motor_direito.run_time(600, 3100, Stop.BRAKE, True)
     drive_base.straight(-55)  
     resetar_guinada()
     giroPID(-20, 1.2, 0.0004, 1)
@@ -310,11 +311,11 @@ def start8():  # START DOS ARTEFATOS
     drive_base.settings(500, 700)
     drive_base.straight(260)
     resetar_guinada()
-    giroPID(20, 1.5, 0.002, 1)
+    giroPID(21, 1.5, 0.002, 1)
     drive_base.straight(450)
     resetar_guinada()
-    giroPID(15, 1.5, 0.002, 1)    
-    drive_base.straight(210)
+    giroPID(16.3, 1.5, 0.002, 1)    
+    drive_base.straight(200)
     dois_motores.straight(-170)
     #drive_base.settings(900,9000)
     drive_base.straight(130)
