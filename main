@@ -82,17 +82,17 @@ class StateMachine:
 #=======================FUNÇÕES DE STARTS==========================#
 def start1():  #START DO BARCO 
     drive_base.use_gyro(True)
-    drive_base.settings(800,800)
-    drive_base.straight(640)
-    motor_direito.run_time(1000,1400)
-    drive_base.settings(800,800)
-    drive_base.straight(-40)
-    drive_base.straight(80)
-    motor_esquerdo.run_time(600,4000)
-    drive_base.straight(-20)
-    motor_direito.run_angle(900, -800, Stop.BRAKE, True)
-    drive_base.settings(900,9000)
-    drive_base.straight(-460)
+    drive_base.settings(800,800)#ANDAR PRA FRENTE 8 CM
+    drive_base.straight(640) #ANDAR PRA FRENTE64
+    motor_direito.run_time(1000,1400)#MOTOR DIREITO GIRA 1,4 SEG
+    drive_base.settings(800,800)#ANDAR PRA  FRENTE 8 CM
+    drive_base.straight(-40)#ANDAR 4 CM PRA TRAS
+    drive_base.straight(80)#ANDAR 8 CM PRA FRENTE
+    motor_esquerdo.run_time(600,4000)#MOTOR ESQUERDO GIRA 4 SEG
+    drive_base.straight(-20)#ANDAR 2 CM PRA TRAS
+    motor_direito.run_angle(900, -800, Stop.BRAKE, True)#MOTOR DIREITO GIRA PRA TRAS 800
+    drive_base.settings(900,9000)#VELOCIDADE E A ACELERAÇÃO 900,9000
+    drive_base.straight(-460)#ANDAR PRA TRAS 46 CM
 
     sm.next_state()
     drive_base.use_gyro(False)
@@ -101,41 +101,37 @@ def start1():  #START DO BARCO
 def start2():  # START DA COMPARTRILHADA 
     drive_base.use_gyro(True)
 
-    drive_base.settings(500, 800)
-    drive_base.straight(600)
+    drive_base.settings(500, 800)#A VELOCIDADE E A ACELERAÇÃO 500,800
+    drive_base.straight(600)#ANDAR PRA FRENTE 60 CM
     resetar_guinada()
-    giroPID(-86, 2, 0.0005, 1)
-    drive_base.straight(-320)
+    giroPID(-86, 2, 0.0005, 1)#GIRO PID -86 GRAUS
+    drive_base.straight(-320)#ANDAR PRA TRAS 32 CM
     x = hub.imu.heading()
     resetar_guinada()
     giroPID(x*-1, 2, 0.0005, 1)
-    drive_base.settings(300, 300)
-    drive_base.straight(20)
-    drive_base.straight(-25)
-    motor_direito.run_angle(300, -290, Stop.BRAKE, True)
-    motor_esquerdo.run_angle(-1000, 90, Stop.BRAKE, True)
+    drive_base.settings(300, 300)#VELOCIDADE E A ACELERAÇÃO 300,300
+    drive_base.straight(20)#ANDAR PRA FRENTE 2 CM
+    drive_base.straight(-25)#ANDAR PRA TRAS 2,5 CM
+    motor_direito.run_angle(300, -290, Stop.BRAKE, True)#MOTOR DIREITO GIRA PRA TRAS 290
+    motor_esquerdo.run_angle(-1000, 90, Stop.BRAKE, True)#MOTOR ESQUERDO GIRA 90 PRA FRENTE
+    drive_base.settings(200, 200)#VELOCIDADE E A ACELERAÇÃO 200,200
+    drive_base.straight(180)#ANDAR PRA FRENTE 18 CM
+    motor_esquerdo.run_time(-1000, 1500, Stop.BRAKE, True)#MOTOR ESQUERDO GIRA PRA TRAS 1,5 SEG
+    motor_esquerdo.run_time(-1000, 1000, Stop.BRAKE, True)#MOTOR ESQUERDO GIRA PRA TRAS 1 SEG
+    drive_base.straight(-20)#ANDAR PRA TRAS 2 CM
 
-    drive_base.settings(200, 200)
-    drive_base.straight(180)
-    motor_esquerdo.run_time(-1000, 1500, Stop.BRAKE, True)
-    motor_esquerdo.run_time(-1000, 1000, Stop.BRAKE, True)
-    '''drive_base.straight(40)
-    motor_esquerdo.run_time(-1000, 700, Stop.BRAKE, True)'''
-    drive_base.straight(-20)
-    #motor_esquerdo.run_angle(1000, 150, Stop.BRAKE, True)
-
-    motor_esquerdo.run_time(1000, 1200, Stop.BRAKE, True)
+    motor_esquerdo.run_time(1000, 1200, Stop.BRAKE, True)#MOTOR ESQUERDO GIRA PRA FRENTE 1,2 SEG
     resetar_guinada()
-    drive_base.settings(900, 9000)
-    drive_base.straight(-90)
+    drive_base.settings(900, 9000)#A VELOCIDADE E A ACELERAÇÃO 900,9000
+    drive_base.straight(-90)#ANDAR PRA TRAS 9 CM
     resetar_guinada()
-    giroPID(82, 2, 0.0005, 1)
-    drive_base.settings(900, 9000)
-    drive_base.straight(-250)
+    giroPID(82, 2, 0.0005, 1)#GIRO PID 82 GRAUS
+    drive_base.settings(900, 9000)#VELOCIDADE E A ACELERAÇÃO 900,9000
+    drive_base.straight(-250)#ANDAR PRA TRAS 25 CM
     resetar_guinada()
-    giroPID(-55, 3, 0.0005, 1)
-    drive_base.settings(900, 9000)
-    drive_base.straight(-650)
+    giroPID(-55, 3, 0.0005, 1)#ANDAR PRA TRAS 55 GRAUS
+    drive_base.settings(900, 9000)#A VELOCIDADE E A ACELERAÇÃO 900,9000
+    drive_base.straight(-650)#ANDAR PRA TRAS 65 CM
 
     sm.next_state()
     drive_base.use_gyro(False)
@@ -143,33 +139,33 @@ def start2():  # START DA COMPARTRILHADA
 def start3():  # START DO TRIDENTE
 
     drive_base.use_gyro(True)
-    motor_direito.run_angle(700, 450, Stop.BRAKE, wait=False)
-    drive_base.settings(400, 400)
-    drive_base.straight(700)
+    motor_direito.run_angle(700, 450, Stop.BRAKE, wait=False)#GIRA MOTOR DIREITO 45
+    drive_base.settings(400, 400)#VELOCIDADE E A ACELERAÇÃO 400,400
+    drive_base.straight(700)#ANDAR PRA FRENTE 70 CM
     
     #drive_base.settings(600, 6000)
-    drive_base.straight(-150)
-    drive_base.straight(80)
+    drive_base.straight(-150)#ANDAR PRA TRAS 15 CM
+    drive_base.straight(80)#ANDAR PRA FRENTE 8 CM
     wait(300)
-    motor_esquerdo.run_angle(9000, 1000, Stop.BRAKE, wait=False)
-    motor_direito.run_angle(-700,450, Stop.BRAKE, wait=True) 
+    motor_esquerdo.run_angle(9000, 1000, Stop.BRAKE, wait=False)#MOTOR ESQUERDO GIRA 1000
+    motor_direito.run_angle(-700,450, Stop.BRAKE, wait=True) #MOTOR DIREITO GIRA PRA TRAS 45
 
-    drive_base.settings(300, 200)
+    drive_base.settings(300, 200)#VELOCIDADE E A ACELERAÇÃO 300,200
     resetar_guinada()
-    giroPID(-42, 0.5, 0.001, 1)
-    motor_direito.run_angle(700,500, Stop.BRAKE, True) 
-    drive_base.straight(25)
-    drive_base.settings(400, 400)
-    drive_base.straight(130)
-    motor_direito.run_time(-700,700, Stop.BRAKE, True)
-    drive_base.straight(-130)
-    resetar_guinada()
-    giroPID(60, 0.5, 0.001, 1)
-    drive_base.straight(-15)
-    motor_direito.run_time(-700,760, Stop.BRAKE, True)
-    drive_base.settings(900, 9000)
+    giroPID(-42, 0.5, 0.001, 1)#GIRO PID -42 GRAUS
+    motor_direito.run_angle(700,500, Stop.BRAKE, True)#MOTOR DIREITO GIRA 50
+    drive_base.straight(25)#ANDAR PRA FRENTE 2,5 CM
+    drive_base.settings(400, 400)#VELOCIDADE E A ACELERAÇÃO 400,400
+    drive_base.straight(130)#ANDAR PRA FRENTE 13 CM
+    motor_direito.run_time(-700,700, Stop.BRAKE, True)#MOTOR DIREITO GIRA PRA TRAS 70
+    drive_base.straight(-130)#ANDAR PRA TRAS 13 CM
+    resetar_guinada()#  RESETAR A GUINADA
+    giroPID(60, 0.5, 0.001, 1)#GIRO PID 60 GRAUS
+    drive_base.straight(-15)#ANDAR PRA TRAS 1,5 CM
+    motor_direito.run_time(-700,760, Stop.BRAKE, True)#MOTOR DIREITO GIRA PRA TRAS 76
+    drive_base.settings(900, 9000)#VELOCIDADE E A ACELERAÇÃO 900,9000
 
-    drive_base.straight(-560)
+    drive_base.straight(-560)#ANDAR PRA TRAS 56 CM
     sm.next_state()
     drive_base.use_gyro(False)
 
@@ -177,125 +173,113 @@ def start3():  # START DO TRIDENTE
 
 def start4():  # START DO DINOSSAURO/3 ARTEFATOS/TRAVESSIA
     resetar_guinada()
-    drive_base.settings(300,300)
-    drive_base.straight(80)
-    giroPID(43,0.7,0.001,1)
-    dois_motores.settings(900,900)
-    dois_motores.straight(-160)
-    drive_base.straight(420)
-    drive_base.straight(-125)
-    resetar_guinada()
-    giroPID(46,1.5,0.001,1)
-    drive_base.straight(390)
-    dois_motores.straight(180)
-    resetar_guinada()
-    giroPID(-62,1.5,0.001,1)
-    #dois_motores.straight(-170)
-    drive_base.straight(20)
-    motor_direito.run_time(-600,700, wait=False)
+    drive_base.settings(300,300)#VELOCIDADE E A ACELERAÇÃO 300,300
+    drive_base.straight(80)#ANDAR PRA FRENTE 8 CM
+    giroPID(43,0.7,0.001,1)#GIRO PID 43 GRAUS
+    dois_motores.settings(900,900)#VELOCIDADE E A ACELERAÇÃO 900,900
+    dois_motores.straight(-160)#ANDAR PRA TRAS 16 CM
+    drive_base.straight(420)#ANDAR PRA FRENTE 42 CM
+    drive_base.straight(-125)#ANDAR PRA TRAS 12,5 CM
+    resetar_guinada()#RESETAR A GUINNADA
+    giroPID(46,1.5,0.001,1)#GIRO PID 46 GRAUS
+    drive_base.straight(390)#ANDAR PRA FRENTE 39 CM
+    dois_motores.straight(180)#ANDAR PRA FRENTE 18 CM
+    resetar_guinada()#RESETAR A GUINADA
+    giroPID(-62,1.5,0.001,1)#GIRO PID -62 GRAUS
+    drive_base.straight(20)#ANDAR PRA FRENTE 2 CM
+    motor_direito.run_time(-600,700, wait=False)#MOTOR DIREITO GIRA PRA TRAS 70
+    motor_esquerdo.run_time(-600,700, wait=True)#MOTOR ESQUERDO GIRA PRA TRAS 70
 
-    motor_esquerdo.run_time(-600,700, wait=True)
-
-    drive_base.straight(-30)
-    resetar_guinada()
-    giroPID(60,1.5,0.001,1)
-    drive_base.settings(900,9000)
-    drive_base.straight(1100)
-    sm.next_state()
-    drive_base.use_gyro(False)
+    drive_base.straight(-30)#ANDAR PRA TRAS 3 CM
+    resetar_guinada() #RESETAR A GUINADA
+    giroPID(60,1.5,0.001,1)#GIRO PID 60 GRAUS
+    drive_base.settings(900,9000)#VELOCIDADE E A ACELERAÇÃO 900,9000
+    drive_base.straight(1100)#ANDAR PRA FRENTE 110 CM
+    sm.next_state()#AVANÇA PARA O PRÓXIMO ESTADO
+    drive_base.use_gyro(False)#DESATIVA O GIRO
 
 def start5():  # START DO TELHADO
-    drive_base.use_gyro(True)
-    hub.imu.reset_heading(0)
-    drive_base.settings(550,600)
-    drive_base.straight(40)
-    giroPID(-41, 1.2, 0.0004, 1)
-    motor_esquerdo.run_time(1000, 600, Stop.BRAKE, False)
-    #drive_base.straight(300)
-    drive_base.settings(550,1000)
-
-    drive_base.straight(445)
-    motor_esquerdo.run_time(-900, 1400, Stop.BRAKE, True)
-    motor_esquerdo.run_time(800, 900, Stop.BRAKE, True)
-
-    motor_direito.run_time(-1000, 1100, Stop.BRAKE, True)
-    
-    motor_esquerdo.run_time(800, 1000, Stop.BRAKE, True)
-    
-    drive_base.settings(500,500)
-    drive_base.straight(-110)
-    motor_direito.run_time(1000, 800, Stop.BRAKE, True)
+    drive_base.use_gyro(True)#ATIVA O GIRO
+    hub.imu.reset_heading(0)#RESETAR A GUINADA
+    drive_base.settings(550,600)#VELOCIDADE E A ACELERAÇÃO 550,600
+    drive_base.straight(40)#ANDAR PRA FRENTE 4 CM
+    giroPID(-41, 1.2, 0.0004, 1)#GIRO PID -41 GRAUS
+    motor_esquerdo.run_time(1000, 600, Stop.BRAKE, False)#MOTOR ESQUERDO GIRA PRA FRENTE 0,6 SEG
+    drive_base.settings(550,1000)#VELOCIDADE E A ACELERAÇÃO 550,1000
+    drive_base.straight(445)#ANDAR PRA FRENTE 44,5 CM
+    motor_esquerdo.run_time(-900, 1400, Stop.BRAKE, True)#MOTOR ESQUERDO GIRA PRA TRAS 1,4 SEG
+    motor_esquerdo.run_time(800, 900, Stop.BRAKE, True)#MOTOR ESQUERDO GIRA PRA FRENTE 0,9 SEG
+    motor_direito.run_time(-1000, 1100, Stop.BRAKE, True)#MOTOR DIREITO GIRA PRA TRAS 1,1 SEG
+    motor_esquerdo.run_time(800, 1000, Stop.BRAKE, True)#MOTOR ESQUERDO GIRA PRA FRENTE 1 SEG
+    drive_base.settings(500,500)#VELOCIDADE E A ACELERAÇÃO 500,500
+    drive_base.straight(-110)#ANDAR PRA TRAS 11 CM
+    motor_direito.run_time(1000, 800, Stop.BRAKE, True)#MOTOR DIREITO GIRA PRA FRENTE 0,8 SEG
     resetar_guinada()
-    giroPID(-31, 0.7, 0.001, 1)
-
-    drive_base.settings(900, 9000)
-    motor_direito.run_time(1000, 1200, Stop.BRAKE, wait=False)
-
-
-    drive_base.straight(-390)
-    
-
+    giroPID(-31, 0.7, 0.001, 1)#GIRO PID -31 GRAUS
+    drive_base.settings(900, 9000)#VELOCIDADE E A ACELERAÇÃO 900,9000
+    motor_direito.run_time(1000, 1200, Stop.BRAKE, wait=False)#MOTOR DIREITO GIRA PRA FRENTE 1,2 SEG
+    drive_base.straight(-390)#ANDAR PRA TRAS 39 CM
     sm.next_state()
     drive_base.use_gyro(False) 
 
 def start6():  # START DAS PEDRAS
-    drive_base.use_gyro(True)
-    drive_base.settings(400, 300)
-    drive_base.straight(620)
-    motor_direito.run_time(-800, 1000, Stop.BRAKE, True)
-    drive_base.settings(600, 1000)
-    drive_base.straight(110)
-    motor_direito.run_time(100, 3100, Stop.BRAKE, True)
-    drive_base.straight(-55)  
+    drive_base.use_gyro(True)#ATIVA O GIRO
+    drive_base.settings(400, 300)#VELOCIDADE E A ACELERAÇÃO 400,300
+    drive_base.straight(620)#ANDAR PRA FRENTE 62 CM
+    motor_direito.run_time(-800, 1000, Stop.BRAKE, True)#MOTOR DIREITO GIRA PRA TRAS 1 SEG
+    drive_base.settings(600, 1000)#VELOCIDADE E A ACELERAÇÃO 600,1000
+    drive_base.straight(110)#ANDAR PRA FRENTE 11 CM
+    motor_direito.run_time(100, 3100, Stop.BRAKE, True)#MOTOR DIREITO GIRA PRA FRENTE 3,1 SEG
+    drive_base.straight(-55)  #ANDAR PRA TRAS 5,5 CM
     resetar_guinada()
-    giroPID(-20, 1.2, 0.0004, 1)
-    drive_base.straight(-35)
+    giroPID(-20, 1.2, 0.0004, 1)#GIRO PID -20 GRAUS
+    drive_base.straight(-35)#ANDAR PRA TRAS 3,5 CM
     x=hub.imu.heading()
     resetar_guinada()
-    giroPID(-90-x, 1.2, 0.0004, 1)
-    drive_base.settings(500, 800)
-    drive_base.straight(-200)
-    motor_esquerdo.run_time(800, 500, Stop.BRAKE, False)
-    drive_base.straight(220)
+    giroPID(-90-x, 1.2, 0.0004, 1)#GIRO PID -90 GRAUS MENOS O VALOR ATUAL
+    drive_base.settings(500, 800)#VELOCIDADE E A ACELERAÇÃO 500,800
+    drive_base.straight(-200)#ANDAR PRA TRAS 20 CM
+    motor_esquerdo.run_time(800, 500, Stop.BRAKE, False)#MOTOR ESQUERDO GIRA PRA FRENTE 0,5 SEG
+    drive_base.straight(220)#ANDAR PRA FRENTE 22 CM
     resetar_guinada()
-    giroPID(-122, 0.9, 0.0004, 1)
-    drive_base.straight(50)    
-    motor_esquerdo.run_time(-800, 1000, Stop.BRAKE, True)
-    motor_esquerdo.run_time(800, 1000, Stop.BRAKE, True)
-    motor_esquerdo.run_time(-800, 1000, Stop.BRAKE, True)
-    motor_esquerdo.run_time(800, 1000, Stop.BRAKE, True)
+    giroPID(-122, 0.9, 0.0004, 1)#GIRO PID -122 GRAUS
+    drive_base.straight(50)  #ANDAR PRA FRENTE 5 CM  
+    motor_esquerdo.run_time(-800, 1000, Stop.BRAKE, True)#MOTOR ESQUERDO GIRA PRA TRAS 1 SEG
+    motor_esquerdo.run_time(800, 1000, Stop.BRAKE, True)#MOTOR ESQUERDO GIRA PRA FRENTE 1 SEG
+    motor_esquerdo.run_time(-800, 1000, Stop.BRAKE, True)#MOTOR ESQUERDO GIRA PRA TRAS 1 SEG
+    motor_esquerdo.run_time(800, 1000, Stop.BRAKE, True)##MOTOR ESQUERDO GIRA PRA FRENTE 1 SEG
 
     resetar_guinada()
-    giroPID(20, 1.2, 0.001, 1)
-    drive_base.settings(900, 9000)
-    drive_base.straight(530)
-    sm.next_state()
-    drive_base.use_gyro(False)
+    giroPID(20, 1.2, 0.001, 1)#GIRO PID 20 GRAUS
+    drive_base.settings(900, 9000)#VELOCIDADE E A ACELERAÇÃO 900,9000
+    drive_base.straight(530)#ANDAR PRA FRENTE 53 CM
+    sm.next_state()#AVANÇA PARA O PRÓXIMO ESTADO
+    drive_base.use_gyro(False)#DESATIVA O GIRO
 
 def start7():  # START DO INDIANA JONES
-    drive_base.use_gyro(True)
-    hub.imu.reset_heading(0)
-    drive_base.settings(500,600)
-    drive_base.straight(230)
-    resetar_guinada()
-    giroPID(-20, 1.2, 0.001, 1)
-    drive_base.straight(310)
-    resetar_guinada()
-    giroPID(-29, 1.2, 0.0004, 1)
-    drive_base.straight(260)
-    drive_base.settings(500,500)
-    drive_base.straight(-40)
-    dois_motores.straight(-80)
-    drive_base.settings(900,9000)
-    drive_base.straight(-200)
-    resetar_guinada()
-    giroPID(25, 1.2, 0.0004, 1)
+    drive_base.use_gyro(True)#ATIVA O GIRO
+    hub.imu.reset_heading(0)#RESETAR A GUINADA
+    drive_base.settings(500,600)#VELOCIDADE E A ACELERAÇÃO 500,600
+    drive_base.straight(230)#ANDAR PRA FRENTE 23 CM
+    resetar_guinada()#  RESETAR A GUINADA
+    giroPID(-20, 1.2, 0.001, 1)#GIRO PID -20 GRAUS
+    drive_base.straight(310)#  ANDAR PRA FRENTE 31 CM
+    resetar_guinada()# RESETAR A GUINADA
+    giroPID(-29, 1.2, 0.0004, 1)#GIRO PID -29 GRAUS
+    drive_base.straight(260)# ANDAR PRA FRENTE 26 CM
+    drive_base.settings(500,500)#VELOCIDADE E A ACELERAÇÃO 500,500
+    drive_base.straight(-40)#ANDAR PRA TRAS 4 CM
+    dois_motores.straight(-80)#ANDAR PRA TRAS 8 CM
+    drive_base.settings(900,9000)#VELOCIDADE E A ACELERAÇÃO 900,9000
+    drive_base.straight(-200)#ANDAR PRA TRAS 20 CM
+    resetar_guinada()#RESETAR A GUINADA
+    giroPID(25, 1.2, 0.0004, 1)#GIRO PID 25 GRAUS
 
-    motor_direito.run_time(900,1200, wait=False)
+    motor_direito.run_time(900,1200, wait=False)#MOTOR DIREITO GIRA 1,2 SEG
 
-    motor_esquerdo.run_time(900,1200, wait=False)
+    motor_esquerdo.run_time(900,1200, wait=False)#MOTOR ESQUERDO GIRA 1,2 SEG
 
-    drive_base.straight(-550)
+    drive_base.straight(-550)# ANDAR PRA TRAS 55 CM
     
 
 
@@ -306,22 +290,22 @@ def start7():  # START DO INDIANA JONES
    
 
 def start8():  # START DOS ARTEFATOS
-    drive_base.use_gyro(True)
-    hub.imu.reset_heading(0)
-    drive_base.settings(500, 700)
-    drive_base.straight(260)
-    resetar_guinada()
-    giroPID(21, 1.5, 0.002, 1)
-    drive_base.straight(450)
-    resetar_guinada()
-    giroPID(6, 1.5, 0.002, 1)    
-    drive_base.straight(250)
-    giroPID(17, 1.5, 0.2, 1)
-    dois_motores.settings(100,100)
-    dois_motores.straight(-170)
-    drive_base.settings(400,400)
-    drive_base.straight(130)
-    drive_base.straight(-200)
+    drive_base.use_gyro(True)#ATIVA O GIRO
+    hub.imu.reset_heading(0)#   RESETAR A GUINADA
+    drive_base.settings(500, 700)#VELOCIDADE E A ACELERAÇÃO 500,700
+    drive_base.straight(260)#ANDAR PRA FRENTE 26 CM
+    resetar_guinada()# RESETAR A GUINADA
+    giroPID(21, 1.5, 0.002, 1)#GIRO PID 21 GRAUS
+    drive_base.straight(450)#ANDAR PRA FRENTE 45 CM
+    resetar_guinada()# RESETAR A GUINADA
+    giroPID(6, 1.5, 0.002, 1) #GIRO PID 6 GRAUS   
+    drive_base.straight(250)#ANDAR PRA FRENTE 25 CM
+    giroPID(17, 1.5, 0.2, 1)#GIRO PID 17 GRAUS
+    dois_motores.settings(100,100)#VELOCIDADE E A ACELERAÇÃO 100,100
+    dois_motores.straight(-170)#ANDAR PRA TRAS 17 CM
+    drive_base.settings(400,400)#VELOCIDADE E A ACELERAÇÃO 400,400
+    drive_base.straight(130)#ANDAR PRA FRENTE 13 CM
+    drive_base.straight(-200)#ANDAR PRA TRAS 20 CM
 
 
 #=======================EXECUÇÃO PRINCIPAL==========================#
@@ -344,14 +328,14 @@ if __name__ == "__main__":
 
     while True:
         if Button.RIGHT in hub.buttons.pressed():   # botão direito
-            sm.next_state()
-            wait(200)
+            sm.next_state()#AVANÇA PARA O PRÓXIMO ESTADO
+            wait(200)#DELAY DE 200 MS
         elif Button.LEFT in hub.buttons.pressed():  # botão esquerdo
-            sm.prev_state()
-            wait(200)
+            sm.prev_state()#VOLTAR PARA O ESTADO ANTERIOR
+            wait(200)#DELAY DE 200 MS
         elif Button.CENTER in hub.buttons.pressed():  # botão do meio
-            sm.run_state()
-            wait(200)
-        elif Button.CENTER in hub.buttons.pressed() and Button.BLUETOOTH in hub.buttons.pressed():
+            sm.run_state()#EXECUTA A AÇÃO DO ESTADO ATUAL
+            wait(200)#DELAY DE 200 MS
+        elif Button.CENTER in hub.buttons.pressed() and Button.BLUETOOTH in hub.buttons.pressed():# botão do meio + bluetooth
             print("Encerrando...")
             break
