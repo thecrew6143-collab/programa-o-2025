@@ -82,7 +82,7 @@ class StateMachine:
 #=======================FUNÇÕES DE STARTS==========================#
 def start1():  #START DO BARCO 
     drive_base.use_gyro(True)
-    drive_base.settings(800,800)#ANDAR PRA FRENTE 8 CM
+    drive_base.settings(400,400)#ANDAR PRA FRENTE 8 CM
     drive_base.straight(640) #ANDAR PRA FRENTE64
     motor_direito.run_time(1000,1400)#MOTOR DIREITO GIRA 1,4 SEG
     drive_base.settings(800,800)#ANDAR PRA  FRENTE 8 CM
@@ -194,7 +194,10 @@ def start4():  # START DO DINOSSAURO/3 ARTEFATOS/TRAVESSIA
     resetar_guinada() #RESETAR A GUINADA
     giroPID(60,1.5,0.001,1)#GIRO PID 60 GRAUS
     drive_base.settings(900,9000)#VELOCIDADE E A ACELERAÇÃO 900,9000
-    drive_base.straight(1100)#ANDAR PRA FRENTE 110 CM
+    drive_base.straight(700)#ANDAR PRA FRENTE 110 CM
+    resetar_guinada() #RESETAR A GUINADA
+    giroPID(30,1.5,0.001,1)#GIRO PID 60 GRAUS
+    drive_base.straight(400)#ANDAR PRA FRENTE 110 CM
     sm.next_state()#AVANÇA PARA O PRÓXIMO ESTADO
     drive_base.use_gyro(False)#DESATIVA O GIRO
 
@@ -219,7 +222,10 @@ def start5():  # START DO TELHADO
     drive_base.settings(900, 9000)#VELOCIDADE E A ACELERAÇÃO 900,9000
     motor_direito.run_time(1000, 1200, Stop.BRAKE, wait=False)#MOTOR DIREITO GIRA PRA FRENTE 1,2 SEG
     drive_base.settings(900, 9000)#VELOCIDADE E A ACELERAÇÃO 900,9000
-    drive_base.straight(-390)#ANDAR PRA TRAS 39 CM
+    drive_base.straight(-300)#ANDAR PRA TRAS 39 CM
+    resetar_guinada()
+    giroPID(35, 2, 0.01, 1)#GIRO PID -31 GRAUS
+    drive_base.straight(-120)#ANDAR PRA TRAS 39 CM
     sm.next_state()
     drive_base.use_gyro(False) 
 
@@ -230,7 +236,7 @@ def start6():  # START DAS PEDRAS
     motor_direito.run_time(-800, 1000, Stop.BRAKE, True)#MOTOR DIREITO GIRA PRA TRAS 1 SEG
     drive_base.settings(600, 1000)#VELOCIDADE E A ACELERAÇÃO 600,1000
     drive_base.straight(110)#ANDAR PRA FRENTE 11 CM
-    motor_direito.run_time(100, 3100, Stop.BRAKE, True)#MOTOR DIREITO GIRA PRA FRENTE 3,1 SEG
+    motor_direito.run_time(100, 2900, Stop.BRAKE, True)#MOTOR DIREITO GIRA PRA FRENTE 3,1 SEG
     drive_base.straight(-55)  #ANDAR PRA TRAS 5,5 CM
     resetar_guinada()
     giroPID(-20, 1.2, 0.0004, 1)#GIRO PID -20 GRAUS
