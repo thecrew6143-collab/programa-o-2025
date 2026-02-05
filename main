@@ -201,23 +201,24 @@ def start4():  # START DO DINOSSAURO/3 ARTEFATOS/TRAVESSIA
 def start5():  # START DO TELHADO
     drive_base.use_gyro(True)#ATIVA O GIRO
     hub.imu.reset_heading(0)#RESETAR A GUINADA
-    drive_base.settings(550,600)#VELOCIDADE E A ACELERAÇÃO 550,600
+    drive_base.settings(900,900)#VELOCIDADE E A ACELERAÇÃO 550,600
     drive_base.straight(40)#ANDAR PRA FRENTE 4 CM
     giroPID(-41, 1.2, 0.0004, 1)#GIRO PID -41 GRAUS
     motor_esquerdo.run_time(1000, 600, Stop.BRAKE, False)#MOTOR ESQUERDO GIRA PRA FRENTE 0,6 SEG
-    drive_base.settings(550,1000)#VELOCIDADE E A ACELERAÇÃO 550,1000
+    drive_base.settings(700,1000)#VELOCIDADE E A ACELERAÇÃO 550,1000
     drive_base.straight(445)#ANDAR PRA FRENTE 44,5 CM
     motor_esquerdo.run_time(-900, 1400, Stop.BRAKE, True)#MOTOR ESQUERDO GIRA PRA TRAS 1,4 SEG
     motor_esquerdo.run_time(800, 900, Stop.BRAKE, True)#MOTOR ESQUERDO GIRA PRA FRENTE 0,9 SEG
-    motor_direito.run_time(-1000, 1100, Stop.BRAKE, True)#MOTOR DIREITO GIRA PRA TRAS 1,1 SEG
-    motor_esquerdo.run_time(800, 1000, Stop.BRAKE, True)#MOTOR ESQUERDO GIRA PRA FRENTE 1 SEG
-    drive_base.settings(500,500)#VELOCIDADE E A ACELERAÇÃO 500,500
+    motor_direito.run_time(-900, 1100, Stop.BRAKE, True)#MOTOR DIREITO GIRA PRA TRAS 1,1 SEG
+    motor_esquerdo.run_time(900, 1000, Stop.BRAKE, True)#MOTOR ESQUERDO GIRA PRA FRENTE 1 SEG
+    drive_base.settings(600,600)#VELOCIDADE E A ACELERAÇÃO 500,500
     drive_base.straight(-110)#ANDAR PRA TRAS 11 CM
     motor_direito.run_time(1000, 800, Stop.BRAKE, True)#MOTOR DIREITO GIRA PRA FRENTE 0,8 SEG
     resetar_guinada()
-    giroPID(-31, 0.7, 0.001, 1)#GIRO PID -31 GRAUS
+    giroPID(-35, 2, 0.01, 1)#GIRO PID -31 GRAUS
     drive_base.settings(900, 9000)#VELOCIDADE E A ACELERAÇÃO 900,9000
     motor_direito.run_time(1000, 1200, Stop.BRAKE, wait=False)#MOTOR DIREITO GIRA PRA FRENTE 1,2 SEG
+    drive_base.settings(900, 9000)#VELOCIDADE E A ACELERAÇÃO 900,9000
     drive_base.straight(-390)#ANDAR PRA TRAS 39 CM
     sm.next_state()
     drive_base.use_gyro(False) 
@@ -273,7 +274,7 @@ def start7():  # START DO INDIANA JONES
     drive_base.settings(900,9000)#VELOCIDADE E A ACELERAÇÃO 900,9000
     drive_base.straight(-200)#ANDAR PRA TRAS 20 CM
     resetar_guinada()#RESETAR A GUINADA
-    giroPID(25, 1.2, 0.0004, 1)#GIRO PID 25 GRAUS
+    giroPID(25, 2, 0.1, 1)#GIRO PID 25 GRAUS
 
     motor_direito.run_time(900,1200, wait=False)#MOTOR DIREITO GIRA 1,2 SEG
 
@@ -299,9 +300,9 @@ def start8():  # START DOS ARTEFATOS
     drive_base.straight(450)#ANDAR PRA FRENTE 45 CM
     resetar_guinada()# RESETAR A GUINADA
     giroPID(6, 1.5, 0.002, 1) #GIRO PID 6 GRAUS   
-    drive_base.straight(250)#ANDAR PRA FRENTE 25 CM
-    giroPID(17, 1.5, 0.2, 1)#GIRO PID 17 GRAUS
-    dois_motores.settings(100,100)#VELOCIDADE E A ACELERAÇÃO 100,100
+    drive_base.straight(200)#ANDAR PRA FRENTE 20 CM
+    giroPID(15, 1.5, 0.2, 1)#GIRO PID 17 GRAUS
+    dois_motores.settings(900,900)#VELOCIDADE E A ACELERAÇÃO 100,100
     dois_motores.straight(-170)#ANDAR PRA TRAS 17 CM
     drive_base.settings(400,400)#VELOCIDADE E A ACELERAÇÃO 400,400
     drive_base.straight(130)#ANDAR PRA FRENTE 13 CM
